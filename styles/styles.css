@@ -16,7 +16,3 @@ body {
   min-height: 90vh;
   aspect-ratio: 1;
 }
-
-.hovering {
-  background-color: red;
-}

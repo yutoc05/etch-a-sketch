@@ -12,10 +12,13 @@ function generateGrid(sideLength) {
 }
 
 container.addEventListener("mouseover", (e) => {
-  e.target.classList.add("hovering");
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 });
 container.addEventListener("mouseout", (e) => {
-  e.target.classList.remove("hovering");
+  e.target.style.backgroundColor = "";
 });
 button.addEventListener("click", () => {
   let sideLength;
