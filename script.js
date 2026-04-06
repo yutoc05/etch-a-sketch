@@ -7,18 +7,18 @@ function generateGrid(sideLength) {
     const div = document.createElement("div");
     div.style.width = `calc(100% / ${sideLength})`;
     div.style.aspectRatio = "1";
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    div.style.opacity = "0";
     container.append(div);
   }
 }
 
 container.addEventListener("mouseover", (e) => {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-});
-container.addEventListener("mouseout", (e) => {
-  e.target.style.backgroundColor = "";
+  if (e.target === container) return;
+  e.target.style.opacity = +e.target.style.opacity + 0.1;
 });
 button.addEventListener("click", () => {
   let sideLength;
