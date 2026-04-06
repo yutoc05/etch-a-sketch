@@ -1,10 +1,14 @@
 const container = document.querySelector(".container");
+const button = document.querySelector("button");
 
-for (let i = 0; i < 256; i++) {
-  const div = document.createElement("div");
-  div.style.width = "calc(100% / 16)";
-  div.style.aspectRatio = "1";
-  container.append(div);
+function generateGrid(sideLength) {
+  container.replaceChildren();
+  for (let i = 0; i < sideLength * sideLength; i++) {
+    const div = document.createElement("div");
+    div.style.width = `calc(100% / ${sideLength})`;
+    div.style.aspectRatio = "1";
+    container.append(div);
+  }
 }
 
 container.addEventListener("mouseover", (e) => {
@@ -12,4 +16,12 @@ container.addEventListener("mouseover", (e) => {
 });
 container.addEventListener("mouseout", (e) => {
   e.target.classList.remove("hovering");
+});
+button.addEventListener("click", () => {
+  let sideLength;
+  while (true) {
+    sideLength = +prompt("How many squares per side should the new grid have?");
+    if (sideLength >= 1 && sideLength <= 100) break;
+  }
+  generateGrid(sideLength);
 });
